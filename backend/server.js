@@ -1,8 +1,12 @@
-import express from "express";
-import cors from "cors";
-import mongoose from "mongoose";
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import listEndpoints from 'express-list-endpoints';
+import mongoose from 'mongoose';
+// import bcrypt from 'bcrypt';
+// import crypto from 'crypto';
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/project-mongo";
+const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/project-mongo';
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
 
@@ -14,11 +18,14 @@ const app = express();
 
 // Add middlewares to enable cors and json body parsing
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
 
 // Start defining your routes here
-app.get("/", (req, res) => {
-  res.send("Hello Technigo!");
+app.get('/', (req, res) => {
+  res.json({
+    responseMessage: 'Week 16 - Authentication',
+    data: listEndpoints(app),
+  });
 });
 
 // Start the server
