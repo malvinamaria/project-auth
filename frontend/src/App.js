@@ -6,6 +6,7 @@ import { Main } from './components/Main';
 import { NotFound } from './components/NotFound';
 import user from 'reducers/user';
 import secrets from 'reducers/secrets';
+import { Provider } from 'react-redux';
 
 export const App = () => {
   const reducer = combineReducers({
