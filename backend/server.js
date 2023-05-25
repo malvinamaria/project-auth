@@ -5,7 +5,6 @@ import listEndpoints from 'express-list-endpoints';
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import crypto from 'crypto';
-import { access } from 'fs';
 
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/project-auth';
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
