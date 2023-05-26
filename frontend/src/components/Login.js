@@ -49,37 +49,76 @@ export const Login = () => {
   };
   return (
     <>
-      <label htmlFor="register">Register</label>
-      <input
-        type="radio"
-        id="register"
-        checked={mode === 'register'}
-        onChange={() => setMode('register')}
-      />
-      <label htmlFor="login">Login</label>
-      <input
-        type="radio"
-        id="login"
-        checked={mode === 'login'}
-        onChange={() => setMode('login')}
-      />
-      <form onSubmit={onFormSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Submit</button>
-      </form>
+      <div className="bg-yellow-300 min-h-screen flex flex-col items-center justify-center">
+        <h1 className="py-10 text-3xl text-center font-medium mb-8">
+          Login or Register for secrets!
+        </h1>
+
+        <div className="flex mb-10">
+          <label
+            htmlFor="register"
+            className="ml-2 text-sm font-large text-gray-900 dark:text-grey-900"
+          >
+            Register
+          </label>
+          <div className="flex items-center mr-4">
+            <input
+              className="w-7 h-4"
+              type="radio"
+              id="register"
+              checked={mode === 'register'}
+              onChange={() => setMode('register')}
+            />
+          </div>
+
+          <label
+            htmlFor="login"
+            className="ml-2 text-sm font-large text-gray-900 dark:text-gray-900"
+          >
+            Login
+          </label>
+          <div className="flex items-center">
+            <input
+              className="w-7 h-4"
+              type="radio"
+              id="login"
+              checked={mode === 'login'}
+              onChange={() => setMode('login')}
+            />
+          </div>
+        </div>
+
+        <form
+          className=" px-4 mb-0 max-w-3xl mx-auto space-y-4"
+          onSubmit={onFormSubmit}
+        >
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="text"
+            required
+            className="w-full border rounded border-gray-200 mb-2 px-3 py-3 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <label htmlFor="password" className="mt-20">
+            Password:
+          </label>
+          <input
+            type="password"
+            id="password"
+            className="w-full border rounded border-gray-200 mb-2 px-3 py-3 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button
+            className="rounded-full bg-pink-300 hover:bg-green-200 py-2 px-4 font-bold text-black w-full"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </>
   );
 };
