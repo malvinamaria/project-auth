@@ -51,19 +51,31 @@ export const Main = () => {
   };
 
   return (
-    <main>
-      <button type="button" onClick={onLogoutButtonClick}>
-        LOGOUT
-      </button>
-      {username ? <h1>This are the secrets of {username} </h1> : ''}
-      {secretsItems.map((item) => {
-        return (
-          <div key={item._id}>
-            <h2>{item.message}</h2>
-            <p>{item.createdAt}</p>
-          </div>
-        );
-      })}
-    </main>
+    <div className="bg-yellow-300 min-h-screen flex flex-col items-center justify-center">
+      <main className=" px-4 mb-0 max-w-3xl mx-auto space-y-4">
+        <button
+          className="rounded-full bg-pink-300 hover:bg-green-200 py-2 px-4 font-bold text-black w-full"
+          type="button"
+          onClick={onLogoutButtonClick}
+        >
+          LOGOUT
+        </button>
+        {username ? (
+          <h1 className="py-10 text-3xl text-center font-medium mb-8">
+            This are the secrets of {username}{' '}
+          </h1>
+        ) : (
+          ''
+        )}
+        {secretsItems.map((item) => {
+          return (
+            <div key={item._id}>
+              <h2>{item.message}</h2>
+              <p>{item.createdAt}</p>
+            </div>
+          );
+        })}
+      </main>
+    </div>
   );
 };

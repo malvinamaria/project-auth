@@ -51,7 +51,7 @@ export const Login = () => {
     <>
       <div className="bg-yellow-300 min-h-screen flex flex-col items-center justify-center">
         <h1 className="py-10 text-3xl text-center font-medium mb-8">
-          Login or Register for secrets!
+          Login or Register for secrets! 🤫
         </h1>
 
         <div className="flex mb-10">
