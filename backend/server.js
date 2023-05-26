@@ -73,12 +73,12 @@ app.post('/register', async (req, res) => {
         accessToken: newUser.accessToken, // send accessToken
       },
     });
-  } catch (err) {
+  } catch (e) {
     res.status(400).json({
       success: false,
-      // response: e
-      message: 'Invalid request',
-      errors: err.errors,
+      response: e,
+      // message: 'Invalid request',
+      // errors: err.errors,
     });
   }
 });
@@ -102,15 +102,15 @@ app.post('/login', async (req, res) => {
     } else {
       res.status(404).json({
         success: false,
-        message: 'User not found',
+        response: 'User not found',
       });
     }
   } catch (e) {
     res.status(500).json({
       success: false,
-      // response: e
-      message: 'Invalid request',
-      errors: err.errors,
+      response: e,
+      // message: 'Invalid request',
+      // errors: err.errors,
     });
   }
 });
@@ -161,11 +161,11 @@ const authenticateUser = async (req, res, next) => {
 // we want to make sure that only logged in users can access this endpoint
 app.get('/secrets', authenticateUser);
 app.get('/secrets', async (req, res) => {
-  const secrets = await Secret.find()
-    .sort({ createdAt: 'desc' })
-    .limit(20)
-    .exec();
-  res.json(secrets);
+  const accessToken = req.header('Authorization');
+  const user = await User.findOne({ accessToken: accessToken });
+  const secrets = await Secret.find({ user: user._id });
+  // const secrets = await Secret.find({ user: user._id });
+  res.status(200).json({ success: true, response: secrets });
 });
 
 app.post('/secrets', authenticateUser);
