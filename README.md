@@ -10,4 +10,5 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 ## View it live
 
-https://snazzy-caramel-847b08.netlify.app
+frontend: https://snazzy-caramel-847b08.netlify.app
+backend: https://project-auth-4yp4ksq4oa-no.a.run.app/
